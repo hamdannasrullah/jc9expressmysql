@@ -1,5 +1,6 @@
 const router = require ('express').Router()
 const conn = require('../connection')
+const ports = require('../config/port')
 
 // CREATE TASK
 router.post('/tasks', (req,res) => {
@@ -41,7 +42,7 @@ router.patch('/tasks/:taskid', (req, res) => {
     const sql = `UPDATE tasks SET completed = true
                     WHERE id = ?`
     const data = req.params.taskid
-    
+
     conn.query(sql, data, (err, result) => {
         if(err) return res.send(err)
 

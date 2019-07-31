@@ -5,6 +5,7 @@ const bcrypt = require ('bcrypt');
 const path = require('path')
 const multer = require('multer')
 const mailVerify = require('../email/nodemailer')
+const ports = require('../config/port')
 
 
 
@@ -215,7 +216,7 @@ router.get('/users/profile/:username', (req, res) => {
             username: user.username,
             name : user.name,
             email: user.email,
-            avatar: `localhost:2020/users/avatar/${user.avatar}`
+            avatar: `localhost:${ports}/users/avatar/${user.avatar}`
         })
     })
 })
